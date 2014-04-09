@@ -1,0 +1,36 @@
+
+<h2>Manager</h2>
+ 
+ <% if params[:user].blank? %>
+ <%user=User.new%>
+ <%else%>
+ <%user=User.new(params[:user])%>
+ <%end%>
+<div class="col-md-3" >
+<%= form_for((user), :url => registration_path(User.new,:remote=>true)) do |f| %>
+  <%#= devise_error_messages! %>
+
+  <%= f.label :email %><br/>
+  <%= f.email_field :email, :class=>"form-control"%>
+
+  <%= hidden_field_tag "role",'Manager' %>
+
+  <%= label_tag :first_name %><br/>
+  <%= text_field_tag :first_name,'', :class=>"form-control"%><br/>
+
+ <%= label_tag :last_name %><br/>
+  <%= text_field_tag :last_name,'', :class=>"form-control"%><br/>
+
+  <%= label_tag :description %><br/>
+  <%= text_area_tag :description,'', :class=>"form-control"%><br/>
+
+  <%= f.label :password %><br />
+  <%= f.password_field :password, :class=>"form-control"%><br/>
+
+  <%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation, :class=>"form-control"%><br/>
+
+ <%= f.submit "Sign up",:class=>"btn btn-primary" %>
+
+<% end %> 
+</div>

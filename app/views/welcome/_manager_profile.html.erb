@@ -1,0 +1,19 @@
+
+<h1> Manager</h1>
+<table  class="table table-bordered table-condensed" >
+  <th>Event Name</th><th>Event Description </th><th>Event Date</th><th>Status</th>
+  <% @eventinfo.each do |eventinfo| %>
+    <tr >
+      <td> <%= eventinfo.event.name %>  </td>
+      <td>  <%= eventinfo.event.description %></td>
+      <td> <%=eventinfo.event.date.strftime("%Y-%B-%e") %></td>
+      <% if !eventinfo.status %>
+         <td><%= link_to 'Approve', root_path(:id=>eventinfo.id), data: {remote: true} %></td>
+      <% else %>
+       <td> you are approve this event</td>
+      <% end %>  
+    </tr>
+  <% end %>
+</table>
+
+

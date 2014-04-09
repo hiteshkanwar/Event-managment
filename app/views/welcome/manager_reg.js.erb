@@ -1,0 +1,9 @@
+
+<% if params[:role] == "Manager" %>
+     
+    $("#redio").html("<%= escape_javascript(render(:partial => "manager_reg"))%>");
+  <% elsif params[:role] == "Client" %>
+    $("#redio").html("<%= escape_javascript(render(:partial => "client"))%>");
+  <% elsif params[:role] == "Person" %>
+    $("#redio").html("<%= escape_javascript(render(:partial => "person"))%>");
+<% end %>

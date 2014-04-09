@@ -1,0 +1,21 @@
+
+<% link_to "title",welcome_content_path  %>
+<h1>Person</h1>
+ <%#debugger%>
+<table  class="table table-bordered table-condensed" >
+     <tr><th>Client_name</th><th>Event Name</th><th>Event Description </th><th>Event Date</th></tr>
+     <% @eventin.each do |eventin| %>
+	   <% if !eventin.event.blank? %>
+	       <tr>
+	       	<%if !Client.find_by_user_id(eventin.client_id).blank? %>
+	        	<td><%=Client.find_by_user_id(eventin.client_id).first_name %></td>
+	        <%end%>
+			    <td><%= eventin.event.name %></td>
+			    <td><%= eventin.event.description %></td>
+			    <td><%= eventin.event.date.strftime("%Y-%B-%e") %></td>
+		   </tr>    
+	   <% end %>  
+	 <% end %>
+</table>  
+
+

@@ -1,0 +1,58 @@
+<h2>Sign up</h2>
+
+<div  id="role" >
+    <% [ 'Manager', 'Client', 'Person' ].each do |theme| %>
+    <%=radio_button_tag 'theme',theme, (!params[:role].blank?&&params[:role]==theme) ? true : false, {:class => "role"}%>
+      <%= theme.humanize %>
+    <% end %>
+</div><br/>
+<%= devise_error_messages! %>
+
+
+ <!--
+ 
+<%#= form_for(resource, :as => resource_name, :url => registration_path(resource_name,:remote=>false)) do |f| %>
+  <%= devise_error_messages! %>
+  
+  <div><%#= f.label :email %><br />
+  <%#= f.email_field :email, :autofocus => true %></div>
+
+  <div><%#= f.label :password %><br />
+  <%#= f.password_field :password %></div>
+
+  <div><%#= f.label :password_confirmation %><br />
+  <%#= f.password_field :password_confirmation %></div>
+
+  <div><%#= f.submit "Sign up" %></div>
+
+<%# end %> 
+-->
+
+ <%= render "devise/shared/links" %>
+
+<script type="text/javascript">
+
+ $(".role").on("change", function(){
+    var data = $(this).attr("value"); 
+  $.ajax({
+
+    url: '/welcome/manager_reg',
+    data: {'role' : data},
+
+    dataType: 'script'
+  });
+
+});
+ 
+</script>
+
+<div id="redio">
+<%if params[:role]=="Manager"%>
+    <%=render "welcome/manager_reg"%>
+ <% elsif  params[:role]=="Client" %>
+    <%=render "welcome/client"%>
+ <% elsif  params[:role]=="Person" %>
+    <%=render "welcome/person"%>
+<%end%>
+</div>
+

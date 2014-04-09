@@ -1,0 +1,10 @@
+<%if User.role(current_user)=="Client" %>
+  <%=render "/welcome/create_event"%>
+<% elsif User.role(current_user)=="Manager" %>
+  <div id="approve">
+	<%=render "/welcome/manager_profile" %>
+  </div>
+<% elsif User.role(current_user)=="Person" %>  
+    <%=render "/welcome/person_profile" %>
+<% end %>
+

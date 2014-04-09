@@ -1,0 +1,52 @@
+	<h2>Title</h2>
+	<div id="title-box" style="padding:10px;border:1px #ffffff solid;">
+	  <% if !@content.try(:title).blank? %>
+        <%= @content.title  %>
+      <% else %>
+		Please add some Title
+	  <% end %>
+	</div>
+	<br/><br/>
+	
+	<h2>Description</h2>
+	<div id="description-box" style="padding:10px;border:1px #ffffff solid;">
+	  <% if !@content.try(:description).blank? %>
+        <%= @content.description  %>
+      <% else %>
+      	Please add some Description
+      <% end %>
+	</div> 
+	
+<script>
+	$(document).click(function (e)
+	{
+	    var container = $("#title");
+	    var description = $("#description");
+	    var container_box = $("#title-box");
+	    var description_box = $("#description-box");
+	    if ((!container_box.is(e.target) && container_box.has(e.target).length === 0) &&    
+	    	(!description_box.is(e.target) && description_box.has(e.target).length === 0))
+	    {    
+             $.ajax({
+	         	url: "/welcome/content?title="+container.val()+"&description="+  description.val()
+	         });
+		}   
+    });
+    
+    $(document).ready(function(){
+	    $("#title-box").click(function(){
+			 if ($("#title-box #add-title").length == 0){
+				$("#title-box").html('<div id="add-title"><input id="title" name="title" type="text"></div>')
+			 }
+		});
+
+		$("#description-box").click(function(){
+			 if ($("#description-box #add-description").length == 0){
+				$("#description-box").html('<div id="add-description"><input id="description" name="description" type="text"></div>')
+			 }
+		});
+
+    });
+
+
+</script>

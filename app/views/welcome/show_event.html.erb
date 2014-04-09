@@ -1,0 +1,28 @@
+  
+<h2>Your events</h2>
+  <table class="table table-bordered table-condensed">
+    <tr>
+      <th>EventName</th>
+      <th>Description</th>
+      <th>Date </th> 
+      <th>File Download</th> 
+      <th>Your pdf</th>
+    </tr>
+    <% @eventinfo.each do |eventinfo| %>
+    
+      <% if !eventinfo.event.blank? %>
+        <tr>
+      		<td> <%= eventinfo.event.name %></td>
+          <td>  <%= eventinfo.event.description %></td>
+          <td> <%=eventinfo.event.date.strftime("%Y-%B-%e") %></td>
+          <td><%= link_to 'Downlaod my PDF', eventinfo.event.file.url %></td>
+          <td> <iframe src="https://docs.google.com/viewer?url=<%=eventinfo.event.file.url%>&embedded=true" style="height: 300px;" frameborder="0">
+              </iframe> 
+             <!--  <a href="http://localhost:3000<%= eventinfo.event.file.url  %>&embedded=true">Your Pdf Viewer</a> -->
+          </td>
+        </tr>
+      <% end %>  
+    <% end %>
+  </table>
+
+  

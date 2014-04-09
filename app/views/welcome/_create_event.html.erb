@@ -1,0 +1,51 @@
+
+
+
+
+<h2>Create an event</h3>
+ <div class="col-md-3" > 
+<%= form_for((Event.new), :url => welcome_create_event_path(Event.new), :multipart => true ) do |f| %>
+  Select manager for event <%= f.collection_select :id, Manager.order(:first_name),:id,:first_name, {}, {:class=> "form-control"} %><br/>
+  
+    <%= check_box_tag "check_all",'fdssdf' %>Selet all checkbox
+    <% Person.all.each do |person| %>
+      <% if !person.id.blank? %>
+        <%= check_box_tag "person_id[]", person.id,'',:class=>'checkbox1' %>
+        <%= person.first_name %>
+      <% end %>  
+    <% end %>
+  <br/>
+
+     Event<%= f.label :name %><br/>
+     <%= f.text_field :name,:class=>"form-control"%>
+
+     <%= f.label :description %></br>
+     <%= f.text_area :description ,:class=>"form-control"%>
+
+     <%= f.label :date %><br/>
+     <%= f.date_select :date ,{:prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' }}, {:class=>"form-control"}  %><br/>
+    
+     <%= f.label :file %>
+     <%= f.file_field :file ,:multipart => true,:class=>"form-control"  %>
+      
+
+  <%= f.submit "Submit",:class=>"btn btn-primary" %><br/>
+<% end %>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#check_all').click(function(event) {  //on click
+        if(this.checked) { // check select status
+            $('.checkbox1').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"              
+            });
+        }else{
+            $('.checkbox1').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                      
+            });        
+        }
+    });
+   
+  });
+</script>

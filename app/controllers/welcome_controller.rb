@@ -5,10 +5,10 @@ class WelcomeController < ApplicationController
   respond_to :html, :js
   
   def index
-     @person_id = Person.find_by_user_id(current_user.id)
-     @eventin = Eventinfo.find_all_by_person_id(@person_id)
-     @status = Eventinfo.where(:id =>params[:id]).update_all(:status => "1")
-     @eventinfo = Eventinfo.find_all_by_manager_id(current_user.id)
+    @person_id = Person.find_by_user_id(current_user.id)
+    @eventin = Eventinfo.find_all_by_person_id(@person_id)
+    @status = Eventinfo.where(:id =>params[:id]).update_all(:status => "1")
+    @eventinfo = Eventinfo.find_all_by_manager_id(current_user.id)
   end
 
   def create_event

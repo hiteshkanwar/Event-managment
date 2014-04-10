@@ -4,12 +4,12 @@
 		<%= render 'content' %>
 	</div>
 	
-	<div id="title-field" style="display:none;">
-		<%=text_field_tag :title %>
+	<div id="title-field" class="col-md-3"  style="display:none;" >
+		<%=text_field_tag :title,'', :class=>"form-control"%>
 	</div>
 	
-	<div id="description-field" style="display:none;">	
-		<%=text_field_tag :description %>
+	<div id="description-field" class="col-md-3" style="display:none;"   >	
+		<%=text_field_tag :description,'', :class=>"form-control"  %>
 	</div>
 	
 </div>

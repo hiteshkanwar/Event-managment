@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+ source 'https://rubygems.org'
 
 gem 'rails', '3.2.14'
 
@@ -10,7 +10,6 @@ gem 'devise'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails', :github => 'anjlab/bootstrap-rails'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem "heroku"
-gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
